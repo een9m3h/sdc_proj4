@@ -23,11 +23,11 @@ The goals / steps of this project are the following:
 [image2]: ./writeup_images/corner_detection.png "Corner detection"
 [image3]: ./writeup_images/correction.png "Image before and after correction"
 [image4]: ./writeup_images/binary_image.png "Binary Image"
-[image5]: ./writeup_images/perspective_transform.jpg "Perspective Transform"
-[image6]: ./writeup_images/histogram.jpg "Histogram"
-[image7]: ./writeup_images/sliding_window.jpg "Sliding Window Search"
-[image8]: ./writeup_images/warm_window.jpg "Warm Start SearchWindow "
-[image9]: ./writeup_images/unwarp.jpg "Unwarp"
+[image5]: ./writeup_images/perspective_transform.png "Perspective Transform"
+[image6]: ./writeup_images/histogram.png "Histogram"
+[image7]: ./writeup_images/sliding_window.png "Sliding Window Search"
+[image8]: ./writeup_images/warm_window.png "Warm Start SearchWindow "
+[image9]: ./writeup_images/unwarp.png "Unwarp"
 [video1]: ./project_video_out.mp4 "Video"
 
 
@@ -35,7 +35,7 @@ The goals / steps of this project are the following:
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
-The code for this step is contained in the code cells 2,3,4 of the IPython notebook located in "./example.ipynb".  An example of the type of camera distortion to be corrected can be observed in the radial distortion in image below:
+The code for this step is contained in the code cells 2,3,4 of the IPython notebook located in "./v2.ipynb".  An example of the type of camera distortion to be corrected can be observed in the radial distortion in image below:
 
 ![Radial Distortion][image1]
 
@@ -57,13 +57,13 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of HLS color transforms and gradient thresholds to generate a binary image (threshold steps and HLS transforms at code blocks 6-9  `example.ipynb`).  The saturation channel and absolute gradient threshold provides the best results. Here's an example of my output for this step.  
+I used a combination of HLS color transforms and gradient thresholds to generate a binary image (threshold steps and HLS transforms at code blocks 6-9  `v2.ipynb`).  The saturation channel and absolute gradient threshold provides the best results. Here's an example of my output for this step.  
 
 ![Binary Image][image4]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `perspective_transform()`, which appears in the file `example.ipynb` .  The `perspective_transform()` function takes as inputs an image (`img`), as well as source (`src`).  I chose to calculate the destination points from the target image shape:
+The code for my perspective transform includes a function called `perspective_transform()`, which appears in the file `v2.ipynb` .  The `perspective_transform()` function takes as inputs an image (`img`), as well as source (`src`).  I chose to calculate the destination points from the target image shape:
 
 ```python
 dst = np.float32([[offset, offset], [img_size[0]-offset, offset], 
@@ -72,7 +72,7 @@ dst = np.float32([[offset, offset], [img_size[0]-offset, offset],
 ```
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![Perspective Transform][image4]
+![Perspective Transform][image5]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
@@ -93,11 +93,11 @@ Cold_Start: Once the lane lines have been detected this can be used as a prior f
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in the `curvature()`function in `example.ipynb`.
+I did this in the `curvature()`function in `v2.ipynb`.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this in my code in `example.ipynb` in the function `transform_back()`.  Here is an example of my result on a test image:
+I implemented this in my code in `v2.ipynb` in the function `transform_back()`.  Here is an example of my result on a test image:
 
 ![Unwarp][image9]
 
